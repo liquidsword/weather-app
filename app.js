@@ -6,6 +6,7 @@ window.addEventListener('load', ()=> {
     let temperatureDescription = document.querySelector(".temperature-description");
     let temperatureDegree = document.querySelector(".temperature-degree");
     let locationTimezone = document.querySelector(".location-timezone");
+    // let icon = document.querySelector(".icon");
 
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition
@@ -21,9 +22,20 @@ window.addEventListener('load', ()=> {
             })
             .then(data => {
                 console.log(data);
-                const {temp_f, } = data.current;
+                const {temp_f, condition, icon } = data.current;
+                //Set DOM Elements from the API
+                temperatureDegree.textContent = temp_f;
+                temperatureDescription.textContent = condition.text;
+                locationTimezone.textContent = data.location.region;
+                // icon.textContent = condition.icon;
             });
         });
         
+    }
+    function setIcons(icon, iconID){
+        const skycons = new skycons({color: "blue"});
+        const currentIcon = icon.replace(/-/g, "_").toUpperCase();
+        skycons.play();
+        return skycons.set(iconID), Skycons(currentIcon);
     }
 });
