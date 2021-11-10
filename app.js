@@ -28,14 +28,16 @@ window.addEventListener('load', ()=> {
                 temperatureDescription.textContent = condition.text;
                 locationTimezone.textContent = data.location.region;
                 // icon.textContent = condition.icon;
+                //Set Icon
+                    setIcons(icon, document.querySelector(".icon"))
             });
         });
         
     }
-    function setIcons(icon, iconID){
-        const skycons = new skycons({color: "blue"});
-        const currentIcon = icon.replace(/-/g, "_").toUpperCase();
-        skycons.play();
-        return skycons.set(iconID), Skycons(currentIcon);
-    }
+    // function setIcons(icon, iconID){
+    //     const skycons = new Skycons({color: "blue"});
+    //     const currentIcon = icon.replace(/-/g, "_").toUpperCase();
+    //     skycons.play();
+    //     return skycons.set(iconID, Skycons[currentIcon]);
+    // }
 });
