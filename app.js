@@ -14,6 +14,8 @@ window.addEventListener('load', ()=> {
             long = position.coords.longitude;
             lat = position.coords.latitude;
 
+            const {icon} = data.weather[0];
+
             const api = `http://api.weatherapi.com/v1/forecast.json?key=876a1e7e0f464a0eac9213645210811&q=New York&days=1&aqi=no&alerts=no`;
         
             fetch(api)
@@ -34,10 +36,4 @@ window.addEventListener('load', ()=> {
         });
         
     }
-    // function setIcons(icon, iconID){
-    //     const skycons = new Skycons({color: "blue"});
-    //     const currentIcon = icon.replace(/-/g, "_").toUpperCase();
-    //     skycons.play();
-    //     return skycons.set(iconID, Skycons[currentIcon]);
-    // }
 });
